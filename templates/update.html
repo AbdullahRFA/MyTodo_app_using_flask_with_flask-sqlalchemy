@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Todo</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">MyTodo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Update Todo Form -->
+  <div class="container my-4">
+    <h2>Update Todo</h2>
+    <form action="/update/{{ todo.sno }}" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Todo Title</label>
+        <input type="text" class="form-control" name="title" id="title" value="{{ todo.title }}" required>
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Todo Description</label>
+        <textarea class="form-control" name="desc" id="desc" rows="3" required>{{ todo.desc }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Update Todo</button>
+      <a href="/" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

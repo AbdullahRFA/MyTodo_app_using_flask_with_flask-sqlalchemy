@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+{% block body %}
+  
+
+  <!-- Add Todo Form -->
+  <div class="container my-4">
+    <h2>Add a New Todo</h2>
+    <form action="/" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Todo Title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Enter todo title" required>
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Todo Description</label>
+        <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Enter todo description" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Add Todo</button>
+    </form>
+  </div>
+
+  <!-- Display Todo List -->
+  <div class="container my-4">
+    <h2>Your Todos</h2>
+    
+        
+        
+        {% if all_todos|length==0 %}
+        <div class="alert alert-dark" role="alert">
+          No Todos found. Add your first todo now
+        </div>
+        {% else %}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Date Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+        {% for todo in all_todos %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.desc }}</td>
+          <td>{{ todo.date_created }}</td>
+          <td>
+            <a href="/update/{{ todo.sno }}" class="btn btn-outline-dark btn-sm">Update</a>
+            <a href="/delete/{{ todo.sno }}" class="btn btn-outline-danger btn-sm">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+
+ 
+
+{% endblock body %}
