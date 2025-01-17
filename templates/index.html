@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+
 {% block title %}
     Home
 {% endblock title %}
-{% block body %}
-  
 
-  <!-- Add Todo Form -->
+{% block body %}
+  <!-- Add Todo Form Section -->
   <div class="container my-4">
     <h2>Add a New Todo</h2>
+    <!-- Form to add new todo -->
     <form action="/" method="POST">
       <div class="mb-3">
         <label for="title" class="form-label">Todo Title</label>
@@ -21,45 +22,45 @@
     </form>
   </div>
 
-  <!-- Display Todo List -->
+  <!-- Display Todo List Section -->
   <div class="container my-4">
     <h2>Your Todos</h2>
     
-        
-        
-        {% if all_todos|length==0 %}
-        <div class="alert alert-dark" role="alert">
-          No Todos found. Add your first todo now
-        </div>
-        {% else %}
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Date Created</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-        {% for todo in all_todos %}
-        <tr>
-          <td>{{ loop.index }}</td>
-          <td>{{ todo.title }}</td>
-          <td>{{ todo.desc }}</td>
-          <td>{{ todo.date_created }}</td>
-          <td>
-            <a href="/update/{{ todo.sno }}" class="btn btn-outline-dark btn-sm">Update</a>
-            <a href="/delete/{{ todo.sno }}" class="btn btn-outline-danger btn-sm">Delete</a>
-          </td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-      </tbody>
-    </table>
+    <!-- Display message if no todos are found -->
+    {% if all_todos|length == 0 %}
+      <div class="alert alert-dark" role="alert">
+        No Todos found. Add your first todo now.
+      </div>
+    {% else %}
+      <!-- Display Todo Table -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through all todos and display them -->
+          {% for todo in all_todos %}
+          <tr>
+            <td>{{ loop.index }}</td> <!-- Display index number -->
+            <td>{{ todo.title }}</td> <!-- Display todo title -->
+            <td>{{ todo.desc }}</td> <!-- Display todo description -->
+            <td>{{ todo.date_created }}</td> <!-- Display date created -->
+            <td>
+              <!-- Update Button -->
+              <a href="/update/{{ todo.sno }}" class="btn btn-outline-dark btn-sm">Update</a>
+              <!-- Delete Button -->
+              <a href="/delete/{{ todo.sno }}" class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
   </div>
-
- 
-
 {% endblock body %}
