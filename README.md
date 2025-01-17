@@ -1,6 +1,6 @@
 # MyTodo App
 
-A simple and responsive To-Do list web application built with **HTML**, **CSS**, **JavaScript**, and **Bootstrap**. This app allows users to create, manage, and organize their tasks efficiently.
+A simple and responsive To-Do list web application built with **HTML**, **CSS**, **Flask**, **flask-sqlalchemy** and **Bootstrap**. This app allows users to create, manage, and organize their tasks efficiently.
 
 ## Features
 
